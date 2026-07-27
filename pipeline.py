@@ -1,5 +1,7 @@
 from src.utils.load_data import load_dataset
 from src.utils.clean_data import clean_dataset
+from src.database.db import save_to_database
+from src.analysis.sql_analysis import run_sql_analysis
 
 
 def main():
@@ -10,11 +12,11 @@ def main():
 
     df = clean_dataset(df)
 
-    print("\nClean Dataset Preview\n")
-    print(df.head())
+    save_to_database(df)
 
-    print("\nDataset Shape")
-    print(df.shape)
+    run_sql_analysis()
+
+    print("\nPipeline Completed Successfully!")
 
 
 if __name__ == "__main__":
